@@ -38,7 +38,22 @@ public class Calculator {
 
             System.out.print("Enter your choice:__\b\b ");
 
-            int choice= scanner.nextInt();
+             // Validate operation choice
+            int choice = -1;
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+            } else {
+                System.out.println("Invalid input! Please enter a number between 1 and 5.");
+                scanner.next();  // clear the invalid input
+                continue;
+            }
+
+            // Handle case if the choice is outside the valid range (1-5)
+            if (choice < 1 || choice > 5) {
+                System.out.println("Invalid choice! Please choose a number between 1 and 5.");
+                continue;
+            }
+
             if(choice ==5) {
                 System.out.println("Exiting Calculator... Goodbye, Have a Nice Day!!");
                 running = false;
